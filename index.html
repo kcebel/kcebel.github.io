@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function startTime() {
+    var today = new Date();
+    var y = today.getFullYear();
+    var mo = today.getMonth()+1;
+    var moHam = 8;
+    var d = today.getDate();
+    var dHam = 25;
+    var h = today.getHours();
+    var hHam = 1+12;
+    var m = today.getMinutes();
+    var mHam = 30;
+    var s = today.getSeconds();
+    var sHam = 0;
+    displayMo = (moHam - mo);
+    displayD = (dHam - d);
+    displayH = (hHam - h);
+    displayM = (mHam - m);
+    displayS = (sHam - s);
+    if(displayS < 0){
+        displayM--;
+        displayS = displayS+60;
+    }
+    if(displayM < 0){
+        displayH--;
+        displayM = displayM+60;
+    }
+    if(displayH < 0){
+        displayD--;
+        displayH = displayH+24;
+    }
+    if(displayD < 0){
+        displayMo--;
+        displayD = displayD+30;
+    }
+    
+    document.getElementById('months').innerHTML = 
+    "Months: " + displayMo;
+    document.getElementById('days').innerHTML = 
+    "Days: " + displayD;
+    document.getElementById('hours').innerHTML = 
+    "Hours: " + displayH;
+    document.getElementById('minutes').innerHTML = 
+    "Minutes: " + displayM;
+    document.getElementById('seconds').innerHTML = 
+    "Seconds: " + displayS;
+
+    var t = setTimeout(startTime, 500);
+}
+</script>
+</head>
+
+<body onload="startTime()">
+    <div id="months"></div>
+    <div id="days"></div>
+    <div id="hours"></div>
+    <div id="minutes"></div>
+    <div id="seconds"></div>
+</body>
+</html>
